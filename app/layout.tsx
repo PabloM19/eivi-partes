@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import "material-symbols/rounded.css";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -20,12 +21,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,0&display=optional"
-          rel="stylesheet"
-        />
-      </head>
       <body className={poppins.variable}>{children}</body>
     </html>
   );
