@@ -310,7 +310,6 @@ function AdminSidebar({
   open: boolean;
   onClose: () => void;
 }) {
-  let lastGroup = "";
   return (
     <>
       {open && <button className="sidebar-backdrop" onClick={onClose} aria-label="Cerrar menú" />}
@@ -322,9 +321,9 @@ function AdminSidebar({
           </button>
         </div>
         <nav aria-label="Navegación principal">
-          {navItems.map((item) => {
-            const showGroup = item.group && item.group !== lastGroup;
-            if (item.group) lastGroup = item.group;
+          {navItems.map((item, index) => {
+            const showGroup =
+              item.group && item.group !== navItems[index - 1]?.group;
             return (
               <div key={item.id}>
                 {showGroup && <p className="nav-group">{item.group}</p>}

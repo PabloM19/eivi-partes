@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="es">
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,0"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,400,0..1,0&display=optional"
           rel="stylesheet"
         />
       </head>
