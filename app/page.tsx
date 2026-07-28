@@ -12,7 +12,7 @@ type AdminView =
   | "catalogs"
   | "reports"
   | "archive";
-type WorkerView = "worker-home" | "new-part" | "profile";
+type WorkerView = "worker-home" | "new-part";
 
 type Part = {
   id: number;
@@ -34,7 +34,7 @@ const parts: Part[] = [
     day: "Hoy",
     employee: "Luz Urbano",
     client: "Eiviplant",
-    house: "EIVIPLANT · GARDEN",
+    house: "EIVIPLANT - GARDEN",
     task: "Reunión con Zerión",
     hours: 1,
     category: "Oficial",
@@ -94,7 +94,7 @@ const parts: Part[] = [
     day: "Sábado",
     employee: "Mónica",
     client: "Eiviplant",
-    house: "EIVIPLANT · GARDEN",
+    house: "EIVIPLANT - GARDEN",
     task: "Organización, limpieza y preparación de portes",
     hours: 7,
     category: "Peón",
@@ -117,7 +117,7 @@ const clients = [
 ];
 
 const houses = [
-  { name: "EIVIPLANT · GARDEN", address: "Ibiza", type: "Interno", client: "Eiviplant" },
+  { name: "EIVIPLANT - GARDEN", address: "Ibiza", type: "Interno", client: "Eiviplant" },
   { name: "PAR 4", address: "Es Cubells", type: "Mantenimiento", client: "Servicios Es Cubells" },
   { name: "PAR 4 OBRA", address: "Es Cubells", type: "Obra", client: "Servicios Es Cubells" },
   { name: "ISCHIA", address: "Sant Josep", type: "Mantenimiento", client: "Servicios Es Cubells" },
@@ -127,17 +127,27 @@ const houses = [
 
 const tasks = [
   "Regar",
-  "Sacar mala hierba",
+  "Sacar mala hierba de plantas",
   "Conectar riego",
   "Administración",
   "Ventas",
   "Limpieza",
   "Organización",
-  "Descargar y colocar plantas",
+  "Descargar, codificar y colocar plantas / materiales",
   "Poda",
   "Recoger",
   "Cavar",
+  "Poner tacos y clavos",
+  "Revisión jardín y riegos por lluvias",
+  "Llevar porte furgón",
+  "Riego con abono",
   "Repaso de riego",
+  "Trasplantar",
+  "Traer y descargar turbas y abono orgánico",
+  "Echar mezcla y cavar",
+  "Sulfatar palmeras",
+  "Sulfatar olivos",
+  "Desbrozar",
 ];
 
 const navItems: { id: AdminView; label: string; icon: string; group?: string }[] = [
@@ -152,14 +162,14 @@ const navItems: { id: AdminView; label: string; icon: string; group?: string }[]
 ];
 
 const viewTitles: Record<AdminView, { title: string; eyebrow: string }> = {
-  dashboard: { title: "Buenos días, Luz", eyebrow: "Martes, 28 de julio" },
-  parts: { title: "Partes de trabajo", eyebrow: "Gestión y revisión" },
-  employees: { title: "Empleados", eyebrow: "Personas y accesos" },
-  clients: { title: "Clientes", eyebrow: "Organización" },
-  houses: { title: "Casas y obras", eyebrow: "Lugares de trabajo" },
-  catalogs: { title: "Catálogos", eyebrow: "Configuración operativa" },
-  reports: { title: "Informes", eyebrow: "Análisis e impresión" },
-  archive: { title: "Archivo histórico", eyebrow: "Conservación de datos" },
+  dashboard: { title: "Inicio", eyebrow: "Martes, 28 de julio" },
+  parts: { title: "Partes de trabajo", eyebrow: "Gestión" },
+  employees: { title: "Empleados", eyebrow: "Gestión" },
+  clients: { title: "Clientes", eyebrow: "Gestión" },
+  houses: { title: "Casas y obras", eyebrow: "Gestión" },
+  catalogs: { title: "Catálogos", eyebrow: "Configuración" },
+  reports: { title: "Informes", eyebrow: "Listados" },
+  archive: { title: "Archivo histórico", eyebrow: "Partes archivados" },
 };
 
 function Icon({ name, filled = false }: { name: string; filled?: boolean }) {
@@ -221,39 +231,30 @@ function Login({
 
   return (
     <main className="login-page">
-      <div className="login-orbit orbit-one" />
-      <div className="login-orbit orbit-two" />
       <section className="login-story">
         <Logo />
-        <div>
-          <span className="soft-chip">
-            <Icon name="eco" />
-            Trabajo más claro, cada día
-          </span>
-          <h1>La gestión de Eiviplant, sin el ruido.</h1>
+        <div className="login-summary-copy">
+          <span className="eyebrow">APLICACIÓN INTERNA</span>
+          <h1>Gestión de partes de trabajo</h1>
           <p>
-            Partes, operarios e informes en un espacio rápido, ordenado y preparado para trabajar
-            desde cualquier dispositivo.
+            Acceso para el equipo de Eiviplant. Permite registrar el trabajo diario y consultar
+            la información necesaria para la gestión.
           </p>
+          <ul className="login-feature-list">
+            <li><Icon name="assignment" /><span><strong>Partes</strong><small>Alta, consulta y revisión</small></span></li>
+            <li><Icon name="groups" /><span><strong>Empleados</strong><small>Usuarios y tipos de empleado</small></span></li>
+            <li><Icon name="print" /><span><strong>Listados</strong><small>Informes por empleado o casa</small></span></li>
+          </ul>
         </div>
-        <div className="login-mini-grid">
-          <article>
-            <Icon name="task_alt" />
-            <div><strong>63.819</strong><span>partes organizados</span></div>
-          </article>
-          <article>
-            <Icon name="bolt" />
-            <div><strong>En segundos</strong><span>sin esperas ni dudas</span></div>
-          </article>
-        </div>
+        <small className="login-version">Acceso exclusivo para personal autorizado</small>
       </section>
 
       <section className="login-panel">
         <div className="login-card glass">
           <div className="mobile-logo"><Logo /></div>
-          <span className="eyebrow">BIENVENIDA</span>
-          <h2>Accede a tu área</h2>
-          <p>Este es un prototipo. Puedes entrar con cualquier dato.</p>
+          <span className="eyebrow">ACCESO</span>
+          <h2>Iniciar sesión</h2>
+          <p>Introduce tu usuario y contraseña.</p>
           <form onSubmit={submit}>
             <label>
               Usuario o correo
@@ -269,7 +270,7 @@ function Login({
                 <input defaultValue="123456" type="password" autoComplete="current-password" />
               </span>
             </label>
-            <div className="form-row split">
+            <div className="form-row">
               <label className="check-row">
                 <input
                   type="checkbox"
@@ -278,20 +279,22 @@ function Login({
                 />
                 Recordarme
               </label>
-              <button type="button" className="text-button">¿Has olvidado tu contraseña?</button>
             </div>
             <button className="primary-button full" type="submit">
-              Entrar como administradora
+              Entrar
               <Icon name="arrow_forward" />
             </button>
-            <button className="secondary-button full" type="button" onClick={() => onLogin("worker")}>
-              <Icon name="smartphone" />
-              Ver demo de operario
-            </button>
+            <div className="login-prototype-role">
+              <span>Vista del prototipo</span>
+              <button className="secondary-button full" type="button" onClick={() => onLogin("worker")}>
+                <Icon name="smartphone" />
+                Entrar como operario
+              </button>
+            </div>
           </form>
           <small className="demo-note">
             <Icon name="info" />
-            Ningún dato de esta demo se envía a Joomla.
+            Prototipo sin conexión con el sistema actual.
           </small>
         </div>
       </section>
@@ -304,18 +307,22 @@ function AdminSidebar({
   onNavigate,
   open,
   onClose,
+  collapsed,
+  onToggle,
 }: {
   active: AdminView;
   onNavigate: (view: AdminView) => void;
   open: boolean;
   onClose: () => void;
+  collapsed: boolean;
+  onToggle: () => void;
 }) {
   return (
     <>
       {open && <button className="sidebar-backdrop" onClick={onClose} aria-label="Cerrar menú" />}
-      <aside className={`sidebar glass ${open ? "open" : ""}`}>
+      <aside className={`sidebar glass ${open ? "open" : ""} ${collapsed ? "collapsed" : ""}`}>
         <div className="sidebar-top">
-          <Logo />
+          <Logo compact={collapsed} />
           <button className="icon-button close-sidebar" onClick={onClose} aria-label="Cerrar menú">
             <Icon name="close" />
           </button>
@@ -331,6 +338,7 @@ function AdminSidebar({
                   className={`nav-item ${active === item.id ? "active" : ""}`}
                   onClick={() => onNavigate(item.id)}
                   data-testid={`nav-${item.id}`}
+                  title={collapsed ? item.label : undefined}
                 >
                   <Icon name={item.icon} filled={active === item.id} />
                   <span>{item.label}</span>
@@ -340,14 +348,15 @@ function AdminSidebar({
             );
           })}
         </nav>
-        <div className="sidebar-help">
-          <span><Icon name="support_agent" /></span>
-          <div>
-            <strong>¿Necesitas ayuda?</strong>
-            <small>Consulta la guía rápida</small>
-          </div>
-          <Icon name="arrow_forward" />
-        </div>
+        <button
+          className="sidebar-collapse-button"
+          onClick={onToggle}
+          aria-label={collapsed ? "Desplegar barra lateral" : "Plegar barra lateral"}
+          title={collapsed ? "Desplegar barra lateral" : "Plegar barra lateral"}
+        >
+          <Icon name={collapsed ? "left_panel_open" : "left_panel_close"} />
+          <span>{collapsed ? "" : "Plegar menú"}</span>
+        </button>
         <div className="sidebar-profile">
           <span className="avatar">LU</span>
           <div><strong>Luz Urbano</strong><small>Administradora</small></div>
@@ -389,10 +398,6 @@ function Topbar({
             Operario
           </button>
         </div>
-        <button className="icon-button notification-button" aria-label="Notificaciones">
-          <Icon name="notifications" />
-          <i />
-        </button>
         <button className="avatar-button" onClick={onLogout} title="Cerrar sesión">
           LU
         </button>
@@ -405,13 +410,11 @@ function MetricCard({
   icon,
   value,
   label,
-  trend,
   tone = "",
 }: {
   icon: string;
   value: string;
   label: string;
-  trend: string;
   tone?: string;
 }) {
   return (
@@ -421,7 +424,6 @@ function MetricCard({
         <strong>{value}</strong>
         <span>{label}</span>
       </div>
-      <small>{trend}</small>
     </article>
   );
 }
@@ -429,35 +431,21 @@ function MetricCard({
 function Dashboard({
   onNavigate,
   onSelectPart,
-  notify,
 }: {
   onNavigate: (view: AdminView) => void;
   onSelectPart: (part: Part) => void;
-  notify: (message: string) => void;
 }) {
   return (
     <div className="page-stack">
       <section className="dashboard-grid">
-        <MetricCard icon="assignment" value="18" label="Partes de hoy" trend="+4 respecto a ayer" />
-        <MetricCard icon="pending_actions" value="4" label="Pendientes de revisar" trend="Requieren tu atención" tone="amber" />
-        <MetricCard icon="schedule" value="146 h" label="Horas esta semana" trend="+8,5 % semanal" />
-        <MetricCard icon="groups" value="9" label="Operarios activos" trend="7 con actividad hoy" />
-
-        <article className="welcome-card bento-card">
-          <div>
-            <span className="soft-chip light"><Icon name="wb_sunny" /> Todo al día</span>
-            <h2>Tu mañana, de un vistazo</h2>
-            <p>Revisa los partes pendientes o genera los informes que más utiliza Luz.</p>
-          </div>
-          <button className="light-button" onClick={() => onNavigate("parts")}>
-            Revisar pendientes <Icon name="arrow_forward" />
-          </button>
-          <div className="leaf-shape"><Icon name="psychiatry" filled /></div>
-        </article>
+        <MetricCard icon="assignment" value="18" label="Partes de hoy" />
+        <MetricCard icon="pending_actions" value="4" label="Pendientes de revisar" tone="amber" />
+        <MetricCard icon="schedule" value="146 h" label="Horas esta semana" />
+        <MetricCard icon="groups" value="9" label="Empleados activos" />
 
         <article className="quick-actions bento-card">
           <div className="section-heading">
-            <div><span className="eyebrow">ACCESOS RÁPIDOS</span><h2>¿Qué necesitas?</h2></div>
+            <div><h2>Accesos directos</h2></div>
           </div>
           <div className="quick-grid">
             <button onClick={() => onNavigate("reports")}>
@@ -487,7 +475,7 @@ function Dashboard({
       <section className="content-grid">
         <article className="panel recent-panel">
           <div className="section-heading">
-            <div><span className="eyebrow">EN TIEMPO REAL</span><h2>Pendientes de revisar</h2></div>
+            <div><h2>Partes pendientes de revisar</h2></div>
             <button className="text-button" onClick={() => onNavigate("parts")}>Ver todos <Icon name="arrow_forward" /></button>
           </div>
           <div className="compact-list">
@@ -501,23 +489,6 @@ function Dashboard({
                 <Icon name="chevron_right" />
               </button>
             ))}
-          </div>
-        </article>
-
-        <article className="panel hours-panel">
-          <div className="section-heading">
-            <div><span className="eyebrow">SEMANA ACTUAL</span><h2>Horas registradas</h2></div>
-            <button className="icon-button" onClick={() => notify("Vista semanal actualizada")}><Icon name="more_horiz" /></button>
-          </div>
-          <div className="hours-total"><strong>146 h</strong><span className="positive-chip">+8,5 %</span></div>
-          <div className="bar-chart" aria-label="Horas por día">
-            {[58, 76, 68, 90, 82, 35, 18].map((height, index) => (
-              <div key={index}><i style={{ height: `${height}%` }} /><span>{["L", "M", "X", "J", "V", "S", "D"][index]}</span></div>
-            ))}
-          </div>
-          <div className="hours-legend">
-            <span><i className="official" /> Oficial <strong>82 h</strong></span>
-            <span><i /> Peón <strong>64 h</strong></span>
           </div>
         </article>
       </section>
@@ -549,7 +520,7 @@ function PartsView({
         <div className="toolbar-copy"><strong>{filtered.length} partes</strong><span>Mostrando actividad reciente</span></div>
         <div className="toolbar-actions">
           <button className="secondary-button" onClick={() => notify("Preparando vista de impresión…")}><Icon name="print" /> Imprimir</button>
-          <button className="secondary-button" onClick={() => notify("Exportación preparada (demo)")}><Icon name="download" /> Exportar</button>
+          <button className="secondary-button" onClick={() => notify("Exportación preparada")}><Icon name="download" /> Exportar</button>
           <button className="primary-button" onClick={() => notify("Formulario de nuevo parte abierto")}><Icon name="add" /> Nuevo parte</button>
         </div>
       </section>
@@ -735,13 +706,9 @@ function ReportsView({ notify }: { notify: (message: string) => void }) {
   const [group, setGroup] = useState("General");
   return (
     <div className="page-stack">
-      <section className="report-hero">
-        <div><span className="eyebrow light-text">INFORMES</span><h2>Convierte el trabajo diario en información clara.</h2><p>Filtra, agrupa e imprime los partes sin recorrer menús interminables.</p></div>
-        <Icon name="analytics" />
-      </section>
       <section className="panel report-builder">
         <div className="section-heading">
-          <div><span className="eyebrow">CONFIGURAR INFORME</span><h2>¿Qué quieres consultar?</h2></div>
+          <div><h2>Filtros del informe</h2></div>
           <div className="segmented">
             {["General", "Por empleado", "Por casa / obra"].map((item) => <button className={group === item ? "active" : ""} onClick={() => setGroup(item)} key={item}>{item}</button>)}
           </div>
@@ -754,20 +721,32 @@ function ReportsView({ notify }: { notify: (message: string) => void }) {
           <button className="primary-button" onClick={() => notify("Informe actualizado")}><Icon name="refresh" /> Generar informe</button>
         </div>
       </section>
-      <section className="mini-stats report-stats">
-        <article><span><Icon name="assignment" /></span><div><strong>64</strong><small>Partes</small></div></article>
-        <article><span><Icon name="schedule" /></span><div><strong>146 h</strong><small>Total de horas</small></div></article>
-        <article><span><Icon name="engineering" /></span><div><strong>82 h</strong><small>Oficial</small></div></article>
-        <article><span><Icon name="yard" /></span><div><strong>64 h</strong><small>Peón</small></div></article>
+      <section className="panel report-summary" aria-label="Resumen de horas">
+        <div>
+          <span className="eyebrow">RESUMEN DE HORAS</span>
+          <strong>146 h</strong>
+          <small>Total registrado</small>
+        </div>
+        <dl>
+          <div><dt>Oficial</dt><dd>82 h</dd></div>
+          <div><dt>Peón</dt><dd>64 h</dd></div>
+        </dl>
       </section>
       <section className="panel table-panel">
         <div className="section-heading report-results">
           <div><span className="eyebrow">20–28 JUL 2026</span><h2>Resultados · {group}</h2></div>
-          <div><button className="secondary-button" onClick={() => notify("Vista de impresión preparada")}><Icon name="print" /> Imprimir</button><button className="secondary-button" onClick={() => notify("CSV generado (demo)")}><Icon name="download" /> Exportar</button></div>
+          <div><button className="secondary-button" onClick={() => notify("Vista de impresión preparada")}><Icon name="print" /> Imprimir</button><button className="secondary-button" onClick={() => notify("CSV generado")}><Icon name="download" /> Exportar</button></div>
         </div>
         <div className="simple-table-head report-grid"><span>Fecha</span><span>Empleado</span><span>Casa / obra</span><span>Cliente</span><span>Tareas</span><span>Horas</span></div>
         {parts.slice(0, 5).map((part) => (
-          <div className="simple-table-row report-grid" key={part.id}><strong>{part.date}</strong><span>{part.employee}</span><strong>{part.house}</strong><span>{part.client}</span><span>{part.task}</span><strong>{formatHours(part.hours)}</strong></div>
+          <div className="simple-table-row report-grid" key={part.id}>
+            <strong className="report-date">{part.date}</strong>
+            <span className="report-employee">{part.employee}</span>
+            <strong className="report-house">{part.house}</strong>
+            <span className="report-client">{part.client}</span>
+            <span className="report-task">{part.task}</span>
+            <strong className="report-hours">{formatHours(part.hours)}</strong>
+          </div>
         ))}
       </section>
     </div>
@@ -779,7 +758,7 @@ function ArchiveView({ notify }: { notify: (message: string) => void }) {
     <div className="page-stack">
       <section className="archive-intro panel">
         <span className="archive-icon"><Icon name="inventory_2" /></span>
-        <div><span className="eyebrow">ARCHIVADO AUTOMÁTICO</span><h2>Los datos antiguos siguen disponibles, sin entorpecer el trabajo diario.</h2><p>La política propuesta archivará partes con más de 5 años. Nunca se eliminan automáticamente.</p></div>
+        <div><h2>Partes archivados</h2><p>Los partes con más de 5 años pasan al archivo y continúan disponibles para consulta.</p></div>
         <button className="secondary-button" onClick={() => notify("Configuración de retención abierta")}><Icon name="settings" /> Configurar</button>
       </section>
       <section className="archive-years">
@@ -842,7 +821,7 @@ function PartDrawer({
         </section>
         <label className="drawer-comment">Comentario interno<textarea placeholder="Añade una nota para el equipo…" /></label>
         <div className="drawer-actions">
-          <button className="secondary-button" onClick={() => notify("Solicitud de corrección enviada (demo)")}><Icon name="undo" /> Solicitar corrección</button>
+          <button className="secondary-button" onClick={() => notify("Solicitud de corrección preparada")}><Icon name="undo" /> Solicitar corrección</button>
           <button className="primary-button" onClick={() => { notify("Parte marcado como revisado"); onClose(); }}><Icon name="task_alt" /> Marcar revisado</button>
         </div>
       </aside>
@@ -862,7 +841,7 @@ function EmployeeModal({
   if (!open) return null;
   const submit = (event: FormEvent) => {
     event.preventDefault();
-    notify("Empleado y acceso creados en la demo");
+    notify("Empleado y acceso creados");
     onClose();
   };
   return (
@@ -881,13 +860,19 @@ function EmployeeModal({
   );
 }
 
-function WorkerHeader({ onRoleChange }: { onRoleChange: (role: Role) => void }) {
+function WorkerHeader({
+  onRoleChange,
+  onLogout,
+}: {
+  onRoleChange: (role: Role) => void;
+  onLogout: () => void;
+}) {
   return (
     <header className="worker-header">
       <Logo compact />
-      <div className="worker-brand"><strong>Eiviplant</strong><small>Área de operario</small></div>
+      <div className="worker-brand"><strong>Eiviplant</strong><small>Partes de trabajo</small></div>
       <button className="worker-role-button" onClick={() => onRoleChange("admin")}><Icon name="admin_panel_settings" /> Vista admin</button>
-      <button className="avatar-button">LU</button>
+      <button className="avatar-button" onClick={onLogout} title="Cerrar sesión" aria-label="Cerrar sesión"><Icon name="logout" /></button>
     </header>
   );
 }
@@ -902,17 +887,12 @@ function WorkerHome({
   const workerParts = parts.filter((part) => part.employee === "Luz Urbano" || part.id === 63792);
   return (
     <div className="worker-page">
-      <section className="worker-greeting"><span className="eyebrow">MARTES, 28 DE JULIO</span><h1>Hola, Luz <span>👋</span></h1><p>Todo listo para registrar el trabajo de hoy.</p></section>
-      <section className="worker-summary">
-        <article className="primary-summary"><span><Icon name="schedule" /></span><div><strong>1 h</strong><small>registrada hoy</small></div><i>Objetivo 8 h</i></article>
-        <article><strong>1</strong><small>Parte hoy</small></article>
-        <article><strong>32 h</strong><small>Esta semana</small></article>
-      </section>
+      <section className="worker-greeting"><h1>Mis partes</h1><p>Martes, 28 de julio</p></section>
       <button className="new-part-hero" onClick={() => onNavigate("new-part")}>
-        <span><Icon name="add" /></span><div><strong>Crear nuevo parte</strong><small>Registra tareas, tiempo y materiales</small></div><Icon name="arrow_forward" />
+        <span><Icon name="add" /></span><div><strong>Nuevo parte</strong><small>Registrar el trabajo realizado</small></div><Icon name="arrow_forward" />
       </button>
       <section className="worker-list-section">
-        <div className="section-heading"><div><span className="eyebrow">ACTIVIDAD</span><h2>Mis partes</h2></div><div className="segmented compact"><button className="active">Semana</button><button>Mes</button></div></div>
+        <div className="section-heading"><div><h2>Partes recientes</h2></div><div className="segmented compact"><button className="active">Semana</button><button>Mes</button></div></div>
         <div className="worker-date-label"><span>HOY</span><i /></div>
         {workerParts.map((part) => (
           <button className="worker-part-card" key={part.id} onClick={() => onSelectPart(part)}>
@@ -936,13 +916,14 @@ function NewPartView({
   const [duration, setDuration] = useState(60);
   const [category, setCategory] = useState<"Oficial" | "Peón">("Oficial");
   const [taskCount, setTaskCount] = useState(1);
+  const [materialCount, setMaterialCount] = useState(0);
   const [saving, setSaving] = useState(false);
   const submit = (event: FormEvent) => {
     event.preventDefault();
     setSaving(true);
     window.setTimeout(() => {
       setSaving(false);
-      notify("Parte guardado correctamente en la demo");
+      notify("Parte guardado correctamente");
       onNavigate("worker-home");
     }, 650);
   };
@@ -951,7 +932,7 @@ function NewPartView({
       <div className="worker-form-head"><button type="button" className="icon-button" onClick={() => onNavigate("worker-home")}><Icon name="arrow_back" /></button><div><span className="eyebrow">NUEVO REGISTRO</span><h1>Crear parte</h1></div><span className="soft-chip">Borrador</span></div>
       <section className="mobile-form-card">
         <div className="mobile-section-title"><span>1</span><div><strong>¿Dónde has trabajado?</strong><small>Selecciona la casa o la obra</small></div></div>
-        <label>Casa / obra<select required defaultValue="EIVIPLANT · GARDEN"><option>EIVIPLANT · GARDEN</option>{houses.slice(1).map((house) => <option key={house.name}>{house.name}</option>)}</select></label>
+        <label>Casa / obra<select required defaultValue="EIVIPLANT - GARDEN"><option>EIVIPLANT - GARDEN</option>{houses.slice(1).map((house) => <option key={house.name}>{house.name}</option>)}</select></label>
         <div className="selected-client"><span><Icon name="domain" /></span><div><small>CLIENTE ASOCIADO</small><strong>Eiviplant</strong></div><Icon name="task_alt" /></div>
         <label>Fecha<input type="date" defaultValue="2026-07-28" /></label>
       </section>
@@ -975,7 +956,26 @@ function NewPartView({
         ))}
         <button type="button" className="add-outline-button" onClick={() => setTaskCount(taskCount + 1)}><Icon name="add_circle" /> Añadir otra tarea</button>
       </section>
-      <section className="mobile-form-card collapsed-card"><span><Icon name="inventory_2" /></span><div><strong>Materiales utilizados</strong><small>No se han añadido materiales</small></div><button type="button"><Icon name="add" /> Añadir</button></section>
+      <section className={`mobile-form-card materials-card ${materialCount === 0 ? "collapsed-card" : ""}`}>
+        <span><Icon name="inventory_2" /></span>
+        <div className="materials-content">
+          <strong>Materiales utilizados</strong>
+          {materialCount === 0 ? (
+            <small>No se han añadido materiales</small>
+          ) : (
+            <div className="materials-list">
+              {Array.from({ length: materialCount }).map((_, index) => (
+                <div className="material-row" key={index}>
+                  <label>Material<input placeholder="Nombre o referencia" /></label>
+                  <label>Cantidad<input type="number" min="0" step="0.01" defaultValue="1" /></label>
+                  <button type="button" onClick={() => setMaterialCount(Math.max(0, materialCount - 1))} aria-label={`Quitar material ${index + 1}`}><Icon name="close" /></button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+        <button type="button" onClick={() => setMaterialCount(materialCount + 1)}><Icon name="add" /> Añadir</button>
+      </section>
       <div className="worker-save-bar">
         <div><small>TOTAL DEL PARTE</small><strong>{formatHours((duration * taskCount) / 60)}</strong></div>
         <button className="primary-button" disabled={saving}>{saving ? <><span className="spinner small" /> Guardando…</> : <><Icon name="task_alt" /> Guardar parte</>}</button>
@@ -984,26 +984,20 @@ function NewPartView({
   );
 }
 
-function WorkerProfile({ onLogout }: { onLogout: () => void }) {
-  return (
-    <div className="worker-page profile-page">
-      <section className="profile-hero"><span className="big-avatar">LU</span><h1>Luz Urbano</h1><p>Oficial · Administradora</p></section>
-      <section className="profile-options">
-        <button><span><Icon name="person" /></span><div><strong>Datos personales</strong><small>Nombre, teléfono y correo</small></div><Icon name="chevron_right" /></button>
-        <button><span><Icon name="lock" /></span><div><strong>Cambiar contraseña</strong><small>Actualiza tus credenciales</small></div><Icon name="chevron_right" /></button>
-        <button><span><Icon name="help" /></span><div><strong>Ayuda</strong><small>Guía rápida de la aplicación</small></div><Icon name="chevron_right" /></button>
-      </section>
-      <button className="logout-button" onClick={onLogout}><Icon name="logout" /> Cerrar sesión</button>
-    </div>
-  );
-}
-
-function WorkerNav({ active, onNavigate }: { active: WorkerView; onNavigate: (view: WorkerView) => void }) {
+function WorkerNav({
+  active,
+  onNavigate,
+  onLogout,
+}: {
+  active: WorkerView;
+  onNavigate: (view: WorkerView) => void;
+  onLogout: () => void;
+}) {
   return (
     <nav className="worker-bottom-nav">
-      <button className={active === "worker-home" ? "active" : ""} onClick={() => onNavigate("worker-home")}><Icon name="home" filled={active === "worker-home"} /><span>Inicio</span></button>
+      <button className={active === "worker-home" ? "active" : ""} onClick={() => onNavigate("worker-home")}><Icon name="assignment" filled={active === "worker-home"} /><span>Mis partes</span></button>
       <button className="center-action" onClick={() => onNavigate("new-part")}><span><Icon name="add" /></span><small>Nuevo parte</small></button>
-      <button className={active === "profile" ? "active" : ""} onClick={() => onNavigate("profile")}><Icon name="person" filled={active === "profile"} /><span>Perfil</span></button>
+      <button onClick={onLogout}><Icon name="logout" /><span>Cerrar sesión</span></button>
     </nav>
   );
 }
@@ -1015,6 +1009,7 @@ export default function Home() {
   const [selectedPart, setSelectedPart] = useState<Part | null>(null);
   const [employeeModal, setEmployeeModal] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [busy, setBusy] = useState(false);
   const [toast, setToast] = useState("");
 
@@ -1044,11 +1039,10 @@ export default function Home() {
   if (sessionRole === "worker") {
     return (
       <main className="worker-app">
-        <WorkerHeader onRoleChange={switchRole} />
+        <WorkerHeader onRoleChange={switchRole} onLogout={() => setSessionRole(null)} />
         {workerView === "worker-home" && <WorkerHome onNavigate={setWorkerView} onSelectPart={setSelectedPart} />}
         {workerView === "new-part" && <NewPartView onNavigate={setWorkerView} notify={notify} />}
-        {workerView === "profile" && <WorkerProfile onLogout={() => setSessionRole(null)} />}
-        {workerView !== "new-part" && <WorkerNav active={workerView} onNavigate={setWorkerView} />}
+        {workerView !== "new-part" && <WorkerNav active={workerView} onNavigate={setWorkerView} onLogout={() => setSessionRole(null)} />}
         <PartDrawer part={selectedPart} onClose={() => setSelectedPart(null)} notify={notify} />
         {toast && <div className="toast"><Icon name="task_alt" /> {toast}</div>}
       </main>
@@ -1056,12 +1050,28 @@ export default function Home() {
   }
 
   return (
-    <main className="admin-app">
-      <AdminSidebar active={adminView} onNavigate={navigateAdmin} open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+    <main className={`admin-app ${sidebarCollapsed ? "sidebar-collapsed" : ""}`}>
+      <AdminSidebar
+        active={adminView}
+        onNavigate={navigateAdmin}
+        open={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+        collapsed={sidebarCollapsed}
+        onToggle={() => setSidebarCollapsed((value) => !value)}
+      />
       <section className="admin-main">
-        <Topbar view={adminView} role={sessionRole} onRoleChange={switchRole} onMenu={() => setSidebarOpen(true)} onLogout={() => setSessionRole(null)} />
+        <Topbar
+          view={adminView}
+          role={sessionRole}
+          onRoleChange={switchRole}
+          onMenu={() => {
+            setSidebarCollapsed(false);
+            setSidebarOpen(true);
+          }}
+          onLogout={() => setSessionRole(null)}
+        />
         <div className="admin-content">
-          {adminView === "dashboard" && <Dashboard onNavigate={navigateAdmin} onSelectPart={setSelectedPart} notify={notify} />}
+          {adminView === "dashboard" && <Dashboard onNavigate={navigateAdmin} onSelectPart={setSelectedPart} />}
           {adminView === "parts" && <PartsView onSelectPart={setSelectedPart} notify={notify} />}
           {adminView === "employees" && <EmployeesView onAdd={() => setEmployeeModal(true)} notify={notify} />}
           {adminView === "clients" && <ClientsView notify={notify} />}
