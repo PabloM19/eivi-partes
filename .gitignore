@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.vinext/
+.wrangler/
+
+.env
+.env.*
+!.env.example
+
+*.log
+.DS_Store
+.idea/
+.vscode/
+coverage/
