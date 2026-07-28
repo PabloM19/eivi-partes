@@ -83,7 +83,7 @@ textarea:focus-visible {
   display: block;
   margin-bottom: 5px;
   color: var(--hunter);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 700;
   letter-spacing: 0.12em;
 }
@@ -126,7 +126,7 @@ textarea:focus-visible {
 
 .brand-copy small {
   color: var(--muted);
-  font-size: 0.64rem;
+  font-size: 0.8125rem;
 }
 
 .brand.compact .brand-mark {
@@ -146,7 +146,7 @@ textarea:focus-visible {
   padding: 0 17px;
   border-radius: 12px;
   border: 1px solid transparent;
-  font-size: 0.82rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
 }
@@ -195,7 +195,7 @@ textarea:focus-visible {
   border: 0;
   color: var(--hunter);
   background: none;
-  font-size: 0.76rem;
+  font-size: 0.9375rem;
   font-weight: 600;
 }
 
@@ -226,7 +226,7 @@ textarea:focus-visible {
   align-items: center;
   gap: 5px;
   border-radius: 999px;
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -397,7 +397,7 @@ textarea:focus-visible {
 .login-card > p {
   margin: 0 0 28px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.9375rem;
 }
 
 .login-card form {
@@ -409,7 +409,7 @@ label {
   display: grid;
   gap: 7px;
   color: #435047;
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -466,7 +466,7 @@ textarea:focus {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.7rem;
+  font-size: 0.875rem;
 }
 
 .check-row input {
@@ -481,7 +481,7 @@ textarea:focus {
   gap: 6px;
   margin-top: 23px;
   color: #7b837c;
-  font-size: 0.65rem;
+  font-size: 0.875rem;
 }
 
 .admin-app {
@@ -522,7 +522,7 @@ textarea:focus {
 .nav-group {
   margin: 18px 12px 6px;
   color: #909990;
-  font-size: 0.59rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.12em;
 }
@@ -539,7 +539,7 @@ textarea:focus {
   border-radius: 12px;
   color: #566158;
   background: none;
-  font-size: 0.76rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   text-align: left;
 }
@@ -564,7 +564,7 @@ textarea:focus {
   border-radius: 999px;
   color: var(--forest);
   background: var(--tea);
-  font-size: 0.62rem;
+  font-size: 0.8125rem;
 }
 
 .sidebar-help {
@@ -594,12 +594,12 @@ textarea:focus {
 }
 
 .sidebar-help strong {
-  font-size: 0.66rem;
+  font-size: 0.875rem;
 }
 
 .sidebar-help small {
   color: rgba(255, 255, 255, 0.65);
-  font-size: 0.54rem;
+  font-size: 0.75rem;
 }
 
 .sidebar-profile {
@@ -621,7 +621,7 @@ textarea:focus {
   border-radius: 12px;
   color: white;
   background: var(--hunter);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
@@ -631,12 +631,12 @@ textarea:focus {
 }
 
 .sidebar-profile strong {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
 }
 
 .sidebar-profile small {
   color: var(--muted);
-  font-size: 0.56rem;
+  font-size: 0.8125rem;
 }
 
 .admin-main {
@@ -688,7 +688,7 @@ textarea:focus {
   border-radius: 8px;
   color: var(--muted);
   background: transparent;
-  font-size: 0.67rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -796,14 +796,14 @@ textarea:focus {
 
 .metric-card div span {
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: 0.875rem;
 }
 
 .metric-card small {
   grid-column: 1 / -1;
   align-self: end;
   color: var(--hunter);
-  font-size: 0.59rem;
+  font-size: 0.8125rem;
 }
 
 .metric-card.amber .metric-icon {
@@ -842,7 +842,7 @@ textarea:focus {
   max-width: 410px;
   margin: 0;
   color: rgba(255, 255, 255, 0.68);
-  font-size: 0.71rem;
+  font-size: 0.875rem;
   line-height: 1.6;
 }
 
@@ -923,13 +923,13 @@ textarea:focus {
 
 .quick-grid strong {
   align-self: end;
-  font-size: 0.7rem;
+  font-size: 0.875rem;
 }
 
 .quick-grid small {
   align-self: start;
   color: var(--muted);
-  font-size: 0.56rem;
+  font-size: 0.8125rem;
 }
 
 .content-grid {
@@ -988,20 +988,20 @@ textarea:focus {
 }
 
 .row-main strong {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
 }
 
 .row-main small {
   overflow: hidden;
   color: var(--muted);
-  font-size: 0.58rem;
+  font-size: 0.8125rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
 .row-person,
 .row-hours {
-  font-size: 0.63rem;
+  font-size: 0.8125rem;
 }
 
 .row-hours {
@@ -1055,7 +1055,7 @@ textarea:focus {
 .bar-chart span {
   margin: 6px 0 -19px;
   color: var(--muted);
-  font-size: 0.55rem;
+  font-size: 0.8125rem;
 }
 
 .hours-legend {
@@ -1070,7 +1070,7 @@ textarea:focus {
   align-items: center;
   gap: 4px 7px;
   color: var(--muted);
-  font-size: 0.57rem;
+  font-size: 0.8125rem;
 }
 
 .hours-legend i {
@@ -1109,7 +1109,7 @@ textarea:focus {
 
 .toolbar-copy span {
   color: var(--muted);
-  font-size: 0.64rem;
+  font-size: 0.8125rem;
 }
 
 .toolbar-actions {
@@ -1132,13 +1132,13 @@ textarea:focus {
 }
 
 .filter-panel label {
-  font-size: 0.57rem;
+  font-size: 0.8125rem;
 }
 
 .filter-panel input,
 .filter-panel select {
   min-height: 40px;
-  font-size: 0.66rem;
+  font-size: 0.875rem;
 }
 
 .search-box {
@@ -1167,7 +1167,7 @@ textarea:focus {
   border: 1px solid var(--line);
   border-radius: 11px;
   background: white;
-  font-size: 0.64rem;
+  font-size: 0.8125rem;
   font-weight: 600;
 }
 
@@ -1179,7 +1179,7 @@ textarea:focus {
   border-radius: 50%;
   color: white;
   background: var(--hunter);
-  font-size: 0.55rem;
+  font-size: 0.8125rem;
 }
 
 .table-panel {
@@ -1200,7 +1200,7 @@ textarea:focus {
   padding: 0 18px;
   color: #858e86;
   background: rgba(243, 240, 230, 0.56);
-  font-size: 0.58rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.04em;
 }
@@ -1221,7 +1221,7 @@ textarea:focus {
 
 .table-row span {
   min-width: 0;
-  font-size: 0.63rem;
+  font-size: 0.8125rem;
 }
 
 .table-row span > strong,
@@ -1233,7 +1233,7 @@ textarea:focus {
   margin-top: 3px;
   overflow: hidden;
   color: var(--muted);
-  font-size: 0.54rem;
+  font-size: 0.75rem;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -1253,7 +1253,7 @@ textarea:focus {
   border-radius: 10px;
   color: var(--forest);
   background: var(--tea);
-  font-size: 0.51rem;
+  font-size: 0.75rem;
   font-style: normal;
   font-weight: 700;
 }
@@ -1280,7 +1280,7 @@ textarea:focus {
   justify-content: space-between;
   padding: 0 18px;
   color: var(--muted);
-  font-size: 0.58rem;
+  font-size: 0.8125rem;
 }
 
 .pagination div {
@@ -1296,7 +1296,7 @@ textarea:focus {
   border: 1px solid var(--line);
   border-radius: 9px;
   background: white;
-  font-size: 0.6rem;
+  font-size: 0.8125rem;
 }
 
 .pagination button.active {
@@ -1330,7 +1330,7 @@ textarea:focus {
 .empty-state p {
   margin: 0 0 18px;
   color: var(--muted);
-  font-size: 0.7rem;
+  font-size: 0.875rem;
 }
 
 .mini-stats {
@@ -1372,7 +1372,7 @@ textarea:focus {
 
 .mini-stats small {
   color: var(--muted);
-  font-size: 0.58rem;
+  font-size: 0.8125rem;
 }
 
 .employee-grid {
@@ -1390,7 +1390,7 @@ textarea:focus {
   border-bottom: 1px solid var(--line);
   text-align: left;
   background: transparent;
-  font-size: 0.63rem;
+  font-size: 0.8125rem;
 }
 
 button.simple-table-row:hover {
@@ -1429,14 +1429,14 @@ button.simple-table-row:hover {
 .entity-copy > small,
 .entity-meta small {
   color: var(--muted);
-  font-size: 0.53rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
 }
 
 .entity-copy h3 {
   margin: 2px 0 5px;
   color: var(--forest-deep);
-  font-size: 0.84rem;
+  font-size: 0.9375rem;
 }
 
 .entity-copy span {
@@ -1444,7 +1444,7 @@ button.simple-table-row:hover {
   align-items: center;
   gap: 5px;
   color: var(--muted);
-  font-size: 0.58rem;
+  font-size: 0.8125rem;
 }
 
 .entity-meta {
@@ -1494,7 +1494,7 @@ button.simple-table-row:hover {
   gap: 5px;
   margin: 0;
   color: var(--muted);
-  font-size: 0.6rem;
+  font-size: 0.8125rem;
 }
 
 .house-client {
@@ -1507,12 +1507,12 @@ button.simple-table-row:hover {
 
 .house-client small {
   color: var(--muted);
-  font-size: 0.5rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
 }
 
 .house-client strong {
-  font-size: 0.66rem;
+  font-size: 0.875rem;
 }
 
 .catalog-panel {
@@ -1535,7 +1535,7 @@ button.simple-table-row:hover {
   border-radius: 10px;
   color: var(--muted);
   background: transparent;
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -1565,7 +1565,7 @@ button.simple-table-row:hover {
 
 .catalog-number {
   color: #9ba29b;
-  font-size: 0.58rem;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 
@@ -1575,12 +1575,12 @@ button.simple-table-row:hover {
 }
 
 .catalog-list strong {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
 }
 
 .catalog-list small {
   color: var(--muted);
-  font-size: 0.55rem;
+  font-size: 0.8125rem;
 }
 
 .report-hero {
@@ -1608,7 +1608,7 @@ button.simple-table-row:hover {
 .report-hero p {
   margin: 0;
   color: rgba(255, 255, 255, 0.67);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
 }
 
 .report-hero > .icon {
@@ -1631,7 +1631,7 @@ button.simple-table-row:hover {
 
 .report-filters input,
 .report-filters select {
-  font-size: 0.65rem;
+  font-size: 0.875rem;
 }
 
 .report-stats {
@@ -1681,7 +1681,7 @@ div.simple-table-row.report-grid {
 .archive-intro p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.64rem;
+  font-size: 0.8125rem;
 }
 
 .archive-years {
@@ -1721,12 +1721,12 @@ div.simple-table-row.report-grid {
 }
 
 .archive-card div strong {
-  font-size: 0.84rem;
+  font-size: 0.9375rem;
 }
 
 .archive-card small {
   color: var(--muted);
-  font-size: 0.56rem;
+  font-size: 0.8125rem;
 }
 
 .drawer-backdrop,
@@ -1780,7 +1780,7 @@ div.simple-table-row.report-grid {
 .drawer-head p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.66rem;
+  font-size: 0.875rem;
 }
 
 .drawer-status {
@@ -1795,7 +1795,7 @@ div.simple-table-row.report-grid {
 
 .drawer-status > span:last-child {
   color: var(--muted);
-  font-size: 0.57rem;
+  font-size: 0.8125rem;
 }
 
 .detail-section {
@@ -1806,7 +1806,7 @@ div.simple-table-row.report-grid {
 .detail-section h3 {
   margin: 0 0 13px;
   color: var(--forest-deep);
-  font-size: 0.78rem;
+  font-size: 0.9375rem;
 }
 
 .detail-grid {
@@ -1825,12 +1825,12 @@ div.simple-table-row.report-grid {
 
 .detail-grid small {
   color: var(--muted);
-  font-size: 0.54rem;
+  font-size: 0.75rem;
 }
 
 .detail-grid strong {
   margin-top: 3px;
-  font-size: 0.66rem;
+  font-size: 0.875rem;
 }
 
 .task-detail-card {
@@ -1863,12 +1863,12 @@ div.simple-table-row.report-grid {
 }
 
 .task-detail-card strong {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
 }
 
 .task-detail-card div span {
   color: var(--muted);
-  font-size: 0.55rem;
+  font-size: 0.8125rem;
 }
 
 .task-detail-card > p {
@@ -1876,7 +1876,7 @@ div.simple-table-row.report-grid {
   padding-top: 12px;
   border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.63rem;
+  font-size: 0.8125rem;
   line-height: 1.6;
 }
 
@@ -1885,7 +1885,7 @@ div.simple-table-row.report-grid {
   justify-content: space-between;
   padding: 7px 0;
   color: var(--muted);
-  font-size: 0.65rem;
+  font-size: 0.875rem;
 }
 
 .cost-row strong {
@@ -1947,7 +1947,7 @@ div.simple-table-row.report-grid {
 .employee-modal legend {
   padding: 0 8px;
   color: var(--forest);
-  font-size: 0.69rem;
+  font-size: 0.875rem;
   font-weight: 700;
 }
 
@@ -1979,7 +1979,7 @@ div.simple-table-row.report-grid {
 
 .option-card small {
   color: var(--muted);
-  font-size: 0.55rem;
+  font-size: 0.8125rem;
   font-weight: 400;
 }
 
@@ -2000,7 +2000,7 @@ div.simple-table-row.report-grid {
   color: var(--forest-deep);
   background: rgba(243, 240, 230, 0.72);
   backdrop-filter: blur(4px);
-  font-size: 0.7rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -2037,7 +2037,7 @@ div.simple-table-row.report-grid {
   color: white;
   background: var(--forest-deep);
   box-shadow: var(--shadow);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   animation: toast-in 250ms ease both;
 }
 
@@ -2075,12 +2075,12 @@ div.simple-table-row.report-grid {
 
 .worker-brand strong {
   color: var(--forest-deep);
-  font-size: 0.85rem;
+  font-size: 0.9375rem;
 }
 
 .worker-brand small {
   color: var(--muted);
-  font-size: 0.52rem;
+  font-size: 0.75rem;
 }
 
 .worker-role-button {
@@ -2093,7 +2093,7 @@ div.simple-table-row.report-grid {
   border-radius: 10px;
   color: var(--forest);
   background: rgba(255, 255, 255, 0.55);
-  font-size: 0.59rem;
+  font-size: 0.8125rem;
   font-weight: 600;
 }
 
@@ -2118,7 +2118,7 @@ div.simple-table-row.report-grid {
 .worker-greeting p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: 0.875rem;
 }
 
 .worker-summary {
@@ -2146,7 +2146,7 @@ div.simple-table-row.report-grid {
 
 .worker-summary article > small {
   color: var(--muted);
-  font-size: 0.52rem;
+  font-size: 0.75rem;
 }
 
 .worker-summary .primary-summary {
@@ -2179,7 +2179,7 @@ div.simple-table-row.report-grid {
 .primary-summary div small,
 .primary-summary i {
   color: rgba(255, 255, 255, 0.64);
-  font-size: 0.49rem;
+  font-size: 0.75rem;
   font-style: normal;
 }
 
@@ -2216,12 +2216,12 @@ div.simple-table-row.report-grid {
 }
 
 .new-part-hero strong {
-  font-size: 0.76rem;
+  font-size: 0.9375rem;
 }
 
 .new-part-hero small {
   color: #5f6e55;
-  font-size: 0.52rem;
+  font-size: 0.75rem;
 }
 
 .worker-list-section {
@@ -2232,7 +2232,7 @@ div.simple-table-row.report-grid {
 .segmented.compact button {
   min-height: 28px;
   padding: 0 9px;
-  font-size: 0.57rem;
+  font-size: 0.8125rem;
 }
 
 .worker-date-label {
@@ -2244,7 +2244,7 @@ div.simple-table-row.report-grid {
 
 .worker-date-label span {
   color: var(--muted);
-  font-size: 0.55rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.08em;
 }
@@ -2288,12 +2288,12 @@ div.simple-table-row.report-grid {
 }
 
 .worker-card-top strong {
-  font-size: 0.67rem;
+  font-size: 0.875rem;
 }
 
 .worker-card-top small {
   color: var(--muted);
-  font-size: 0.52rem;
+  font-size: 0.75rem;
 }
 
 .worker-part-card > p {
@@ -2302,7 +2302,7 @@ div.simple-table-row.report-grid {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   color: #475348;
-  font-size: 0.62rem;
+  font-size: 0.8125rem;
 }
 
 .worker-card-bottom {
@@ -2318,7 +2318,7 @@ div.simple-table-row.report-grid {
   justify-content: flex-end;
   gap: 5px;
   color: var(--forest);
-  font-size: 0.65rem;
+  font-size: 0.875rem;
 }
 
 .worker-bottom-nav {
@@ -2350,7 +2350,7 @@ div.simple-table-row.report-grid {
   border: 0;
   color: #859087;
   background: transparent;
-  font-size: 0.52rem;
+  font-size: 0.75rem;
 }
 
 .worker-bottom-nav > button.active {
@@ -2376,7 +2376,7 @@ div.simple-table-row.report-grid {
 
 .center-action small {
   margin-top: 2px;
-  font-size: 0.52rem;
+  font-size: 0.75rem;
   font-weight: 600;
 }
 
@@ -2427,7 +2427,7 @@ div.simple-table-row.report-grid {
   border-radius: 9px;
   color: white;
   background: var(--forest);
-  font-size: 0.64rem;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 
@@ -2437,12 +2437,12 @@ div.simple-table-row.report-grid {
 }
 
 .mobile-section-title strong {
-  font-size: 0.72rem;
+  font-size: 0.875rem;
 }
 
 .mobile-section-title small {
   color: var(--muted);
-  font-size: 0.52rem;
+  font-size: 0.75rem;
 }
 
 .selected-client {
@@ -2472,12 +2472,12 @@ div.simple-table-row.report-grid {
 
 .selected-client small {
   color: var(--muted);
-  font-size: 0.46rem;
+  font-size: 0.75rem;
   letter-spacing: 0.06em;
 }
 
 .selected-client strong {
-  font-size: 0.63rem;
+  font-size: 0.8125rem;
 }
 
 .selected-client > .icon {
@@ -2500,7 +2500,7 @@ div.simple-table-row.report-grid {
 }
 
 .task-card-heading strong {
-  font-size: 0.68rem;
+  font-size: 0.875rem;
 }
 
 .task-card-heading button {
@@ -2510,7 +2510,7 @@ div.simple-table-row.report-grid {
   border: 0;
   color: var(--terracotta);
   background: transparent;
-  font-size: 0.56rem;
+  font-size: 0.8125rem;
 }
 
 .duration-stepper {
@@ -2534,7 +2534,7 @@ div.simple-table-row.report-grid {
 
 .duration-stepper strong {
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 0.9375rem;
 }
 
 .category-switch {
@@ -2552,7 +2552,7 @@ div.simple-table-row.report-grid {
   border: 1px solid var(--line);
   border-radius: 12px;
   background: white;
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -2590,12 +2590,12 @@ div.simple-table-row.report-grid {
 }
 
 .collapsed-card strong {
-  font-size: 0.67rem;
+  font-size: 0.875rem;
 }
 
 .collapsed-card small {
   color: var(--muted);
-  font-size: 0.52rem;
+  font-size: 0.75rem;
 }
 
 .collapsed-card button {
@@ -2605,7 +2605,7 @@ div.simple-table-row.report-grid {
   border: 0;
   color: var(--forest);
   background: transparent;
-  font-size: 0.58rem;
+  font-size: 0.8125rem;
   font-weight: 600;
 }
 
@@ -2635,7 +2635,7 @@ div.simple-table-row.report-grid {
 
 .worker-save-bar small {
   color: var(--muted);
-  font-size: 0.46rem;
+  font-size: 0.75rem;
   letter-spacing: 0.07em;
 }
 
@@ -2675,7 +2675,7 @@ div.simple-table-row.report-grid {
 .profile-hero p {
   margin: 0;
   color: var(--muted);
-  font-size: 0.62rem;
+  font-size: 0.8125rem;
 }
 
 .profile-options {
@@ -2712,12 +2712,12 @@ div.simple-table-row.report-grid {
 }
 
 .profile-options strong {
-  font-size: 0.67rem;
+  font-size: 0.875rem;
 }
 
 .profile-options small {
   color: var(--muted);
-  font-size: 0.52rem;
+  font-size: 0.75rem;
 }
 
 .logout-button {
@@ -2732,7 +2732,7 @@ div.simple-table-row.report-grid {
   border-radius: 14px;
   color: var(--terracotta);
   background: rgba(242, 221, 215, 0.5);
-  font-size: 0.65rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
@@ -2933,7 +2933,7 @@ div.simple-table-row.report-grid {
     margin-bottom: 2px;
     color: #929a93;
     content: attr(data-label);
-    font-size: 0.48rem;
+    font-size: 0.75rem;
     font-weight: 600;
   }
 
@@ -3213,13 +3213,13 @@ textarea {
 }
 
 .login-feature-list strong {
-  font-size: 0.82rem;
+  font-size: 0.9375rem;
 }
 
 .login-feature-list small,
 .login-version {
   color: var(--muted);
-  font-size: 0.64rem;
+  font-size: 0.8125rem;
 }
 
 .login-panel {
@@ -3253,7 +3253,7 @@ textarea {
 
 .login-prototype-role > span {
   color: var(--muted);
-  font-size: 0.62rem;
+  font-size: 0.8125rem;
 }
 
 .sidebar {
@@ -3283,7 +3283,7 @@ textarea {
   border-top: 1px solid var(--line);
   color: var(--muted);
   background: transparent;
-  font-size: 0.65rem;
+  font-size: 0.875rem;
 }
 
 .sidebar-collapse-button:hover {
@@ -3306,11 +3306,11 @@ textarea {
 }
 
 .sidebar.collapsed .nav-group,
-.sidebar.collapsed .nav-item > span,
+.sidebar.collapsed .nav-item > span:not(.icon),
 .sidebar.collapsed .nav-item > b,
 .sidebar.collapsed .sidebar-profile > div,
 .sidebar.collapsed .sidebar-profile > .icon,
-.sidebar.collapsed .sidebar-collapse-button > span {
+.sidebar.collapsed .sidebar-collapse-button > span:not(.icon) {
   display: none;
 }
 
@@ -3437,7 +3437,7 @@ textarea {
 .report-summary small,
 .report-summary dt {
   color: var(--muted);
-  font-size: 0.58rem;
+  font-size: 0.8125rem;
 }
 
 .report-summary dl {
@@ -3535,12 +3535,12 @@ textarea {
 }
 
 .materials-content > strong {
-  font-size: 0.67rem;
+  font-size: 0.875rem;
 }
 
 .materials-content > small {
   color: var(--muted);
-  font-size: 0.52rem;
+  font-size: 0.75rem;
 }
 
 .materials-list {
@@ -3573,7 +3573,7 @@ textarea {
   border: 0;
   color: var(--forest);
   background: transparent;
-  font-size: 0.58rem;
+  font-size: 0.8125rem;
   font-weight: 600;
 }
 
@@ -3632,7 +3632,7 @@ textarea {
     padding: 0 12px;
   }
 
-  .sidebar.collapsed .nav-item > span,
+  .sidebar.collapsed .nav-item > span:not(.icon),
   .sidebar.collapsed .nav-item > b,
   .sidebar.collapsed .sidebar-profile > div,
   .sidebar.collapsed .sidebar-profile > .icon {
@@ -3670,7 +3670,7 @@ textarea {
   }
 
   .login-story > .login-summary-copy > p {
-    font-size: 0.75rem;
+    font-size: 0.9375rem;
     line-height: 1.5;
   }
 
@@ -3801,5 +3801,255 @@ textarea {
 
   .primary-summary > span {
     display: grid;
+  }
+}
+
+/* Readability and official brand pass. */
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.brand {
+  min-width: 0;
+}
+
+.brand-image {
+  display: block;
+  width: 172px;
+  height: auto;
+  object-fit: contain;
+}
+
+.brand.compact .brand-image {
+  width: 38px;
+  height: 46px;
+  object-fit: contain;
+}
+
+.login-story > .brand .brand-image {
+  width: min(220px, 58vw);
+}
+
+.sidebar .brand-image {
+  width: 158px;
+}
+
+.sidebar.collapsed .brand-image {
+  width: 38px;
+}
+
+.sidebar.collapsed .nav-item > .icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  font-size: 24px;
+}
+
+.sidebar.collapsed .sidebar-collapse-button > .icon {
+  display: inline-block;
+  font-size: 24px;
+}
+
+.sidebar.collapsed .nav-item,
+.sidebar.collapsed .sidebar-collapse-button {
+  min-height: 48px;
+}
+
+button,
+input,
+select,
+textarea {
+  font-size: 0.9375rem;
+}
+
+input,
+select {
+  min-height: 48px;
+}
+
+textarea {
+  min-height: 108px;
+}
+
+label,
+.check-row {
+  font-size: 0.875rem;
+}
+
+.primary-button,
+.secondary-button,
+.light-button,
+.add-outline-button {
+  min-height: 46px;
+  font-size: 0.9375rem;
+}
+
+.eyebrow,
+.nav-group {
+  font-size: 0.75rem;
+}
+
+.nav-item {
+  min-height: 48px;
+  font-size: 0.9375rem;
+}
+
+.nav-item .icon {
+  font-size: 23px;
+}
+
+.sidebar-profile strong,
+.worker-brand strong {
+  font-size: 0.9375rem;
+}
+
+.sidebar-profile small,
+.worker-brand small,
+.demo-note,
+.login-version {
+  font-size: 0.75rem;
+}
+
+.topbar h1 {
+  font-size: clamp(1.25rem, 2vw, 1.6rem);
+}
+
+.section-heading h2,
+.toolbar-copy h2 {
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+}
+
+.section-heading p,
+.toolbar-copy p,
+.metric-card span,
+.quick-grid small,
+.entity-copy small,
+.house-card small,
+.archive-card small,
+.worker-part-card small,
+.selected-client small,
+.mobile-section-title small,
+.collapsed-card small,
+.materials-content > small {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+}
+
+.metric-card strong {
+  font-size: 1.5rem;
+}
+
+.quick-grid strong,
+.entity-copy strong,
+.house-card strong,
+.worker-part-card strong,
+.mobile-section-title strong,
+.collapsed-card strong,
+.materials-content > strong {
+  font-size: 0.9375rem;
+}
+
+.status-chip,
+.soft-chip,
+.category-dot,
+.worker-date-label,
+.catalog-number {
+  font-size: 0.75rem;
+}
+
+.table-head,
+.simple-table-head {
+  font-size: 0.8125rem;
+}
+
+.table-row,
+.simple-table-row,
+.compact-row,
+.catalog-list button,
+.report-summary dt,
+.report-summary small {
+  font-size: 0.875rem;
+}
+
+.report-summary dd {
+  font-size: 1rem;
+}
+
+.worker-bottom-nav > button,
+.center-action small {
+  font-size: 0.75rem;
+}
+
+.worker-role-button {
+  font-size: 0.8125rem;
+}
+
+.worker-greeting p,
+.worker-card-top small,
+.worker-card-bottom,
+.task-card-heading strong,
+.worker-save-bar small {
+  font-size: 0.8125rem;
+}
+
+.worker-part-card p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.worker-form-head h1,
+.worker-greeting h1 {
+  line-height: 1.2;
+}
+
+@media (max-width: 1000px) {
+  .sidebar.collapsed .nav-item > .icon {
+    display: inline-block;
+  }
+
+  .sidebar .brand-image,
+  .sidebar.collapsed .brand-image {
+    width: 158px;
+    height: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .worker-header {
+    gap: 8px;
+  }
+
+  .brand.compact .brand-image {
+    width: 34px;
+    height: 42px;
+  }
+
+  .worker-brand strong {
+    font-size: 0.875rem;
+  }
+
+  .worker-brand small {
+    font-size: 0.75rem;
+  }
+
+  .worker-bottom-nav > button,
+  .center-action small {
+    font-size: 0.75rem;
+  }
+
+  .worker-role-button {
+    width: 42px;
+    flex: 0 0 42px;
+    padding: 0;
+    font-size: 0;
+  }
+
+  .worker-role-button .icon {
+    font-size: 21px;
   }
 }

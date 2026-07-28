@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useMemo, useState } from "react";
+import Image from "next/image";
 
 type Role = "admin" | "worker";
 type AdminView =
@@ -196,15 +197,14 @@ function formatHours(value: number) {
 function Logo({ compact = false }: { compact?: boolean }) {
   return (
     <div className={`brand ${compact ? "compact" : ""}`} aria-label="Eiviplant">
-      <span className="brand-mark">
-        <Icon name="psychiatry" filled />
-      </span>
-      {!compact && (
-        <span className="brand-copy">
-          <strong>Eiviplant</strong>
-          <small>Partes de trabajo</small>
-        </span>
-      )}
+      <Image
+        className="brand-image"
+        src={compact ? "/brand/eiviplant-isologo.png" : "/brand/eiviplant-logo.png"}
+        alt="Eiviplant"
+        width={compact ? 140 : 500}
+        height={167}
+        priority
+      />
     </div>
   );
 }
@@ -354,7 +354,7 @@ function AdminSidebar({
           aria-label={collapsed ? "Desplegar barra lateral" : "Plegar barra lateral"}
           title={collapsed ? "Desplegar barra lateral" : "Plegar barra lateral"}
         >
-          <Icon name={collapsed ? "left_panel_open" : "left_panel_close"} />
+          <Icon name={collapsed ? "chevron_right" : "chevron_left"} />
           <span>{collapsed ? "" : "Plegar menú"}</span>
         </button>
         <div className="sidebar-profile">
