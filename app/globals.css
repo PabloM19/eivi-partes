@@ -4053,3 +4053,93 @@ label,
     font-size: 21px;
   }
 }
+
+/* Consistent font-weight hierarchy. */
+
+body {
+  font-weight: 400;
+}
+
+strong {
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4,
+legend {
+  font-weight: 600;
+}
+
+label,
+.nav-item,
+.sidebar-collapse-button,
+.segmented button,
+.tabs button,
+.check-row {
+  font-weight: 500;
+}
+
+.login-feature-list strong,
+.sidebar-profile strong,
+.toolbar-copy strong,
+.quick-grid strong,
+.entity-copy strong,
+.house-top strong,
+.mobile-section-title strong,
+.materials-content > strong,
+.new-part-hero strong {
+  font-weight: 500;
+}
+
+.row-main strong,
+.row-hours,
+.parts-grid strong,
+.person-cell strong,
+.employee-grid > strong,
+.entity-meta strong,
+.house-client strong,
+.catalog-list button strong,
+.simple-table-row strong,
+.report-date,
+.report-house,
+.report-hours,
+.detail-grid strong,
+.task-detail-card strong,
+.cost-row:not(.total) strong,
+.worker-card-top strong,
+.worker-card-bottom strong,
+.selected-client strong,
+.duration-stepper strong {
+  font-weight: 400;
+}
+
+.hours-cell {
+  font-weight: 400;
+}
+
+.table-head,
+.simple-table-head {
+  font-weight: 600;
+}
+
+.person-cell i {
+  font-weight: 600;
+}
+
+.metric-card strong,
+.mini-stats strong,
+.report-summary > div:first-child strong,
+.report-summary dd,
+.cost-row.total strong,
+.worker-save-bar strong {
+  font-weight: 700;
+}
+
+.status-chip,
+.soft-chip,
+.primary-button,
+.worker-date-label span {
+  font-weight: 600;
+}
