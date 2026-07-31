@@ -4180,7 +4180,7 @@ label,
   font-size: 0.9375rem;
 }
 
-.bulk-action-copy span:not(.bulk-icon) {
+.bulk-action-copy > div > span {
   color: var(--muted);
   font-size: 0.8125rem;
 }
@@ -4194,6 +4194,10 @@ label,
   border-radius: 11px;
   color: white;
   background: var(--hunter);
+}
+
+.bulk-icon .icon {
+  color: white;
 }
 
 .bulk-action-controls {
