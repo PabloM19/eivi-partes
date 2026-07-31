@@ -4143,3 +4143,381 @@ label,
 .worker-date-label span {
   font-weight: 600;
 }
+
+/* Bulk review flow */
+
+.bulk-entry-button.active {
+  color: var(--forest-deep);
+  border-color: rgba(65, 103, 68, 0.34);
+  background: rgba(216, 229, 182, 0.34);
+}
+
+.bulk-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(216, 229, 182, 0.18);
+}
+
+.bulk-action-copy,
+.bulk-action-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bulk-action-copy > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bulk-action-copy strong {
+  color: var(--forest-deep);
+  font-size: 0.9375rem;
+}
+
+.bulk-action-copy span:not(.bulk-icon) {
+  color: var(--muted);
+  font-size: 0.8125rem;
+}
+
+.bulk-icon {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+  place-items: center;
+  border-radius: 11px;
+  color: white;
+  background: var(--hunter);
+}
+
+.bulk-action-controls {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.bulk-action-controls .text-button {
+  min-height: 38px;
+  padding: 0 7px;
+  color: var(--forest);
+}
+
+.selection-count {
+  padding: 7px 10px;
+  border-radius: 999px;
+  color: var(--forest-deep);
+  background: var(--tea);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.bulk-action-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.48;
+}
+
+.unreview-button {
+  color: #765a1f;
+  border-color: rgba(151, 113, 34, 0.25);
+  background: #fffaf0;
+}
+
+.parts-grid.bulk-enabled {
+  grid-template-columns: 30px 102px 85px minmax(125px, 0.85fr) minmax(150px, 1fr) minmax(190px, 1.45fr) 72px 28px;
+}
+
+.selectable-record {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  align-items: stretch;
+  border-bottom: 1px solid var(--line);
+  transition: background 160ms ease, box-shadow 160ms ease;
+}
+
+.selectable-record .table-row {
+  border-bottom: 0;
+  padding-left: 0;
+}
+
+.selectable-record.selected {
+  background: rgba(216, 229, 182, 0.23);
+  box-shadow: inset 3px 0 var(--hunter);
+}
+
+.selectable-record .table-row.selected,
+.selectable-record .table-row.selected:hover {
+  background: transparent;
+}
+
+.select-control {
+  display: grid;
+  min-width: 30px;
+  place-items: center;
+  cursor: pointer;
+}
+
+.select-control input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.select-control > span {
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border: 1.5px solid #9ca69d;
+  border-radius: 6px;
+  background: white;
+  transition: border-color 150ms ease, background 150ms ease;
+}
+
+.select-control input:focus-visible + span {
+  outline: 3px solid rgba(105, 141, 74, 0.22);
+  outline-offset: 2px;
+}
+
+.select-control input:checked + span {
+  border-color: var(--hunter);
+  background: var(--hunter);
+}
+
+.select-control input:checked + span::after {
+  color: white;
+  content: "✓";
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.select-all-control {
+  justify-content: start;
+}
+
+.confirm-modal {
+  position: fixed;
+  z-index: 70;
+  top: 50%;
+  left: 50%;
+  width: min(520px, calc(100% - 28px));
+  max-height: calc(100vh - 28px);
+  padding: 28px;
+  overflow-y: auto;
+  border: 1px solid rgba(65, 103, 68, 0.12);
+  border-radius: 22px;
+  background: var(--white);
+  box-shadow: 0 28px 80px rgba(16, 34, 21, 0.24);
+  transform: translate(-50%, -50%);
+  animation: confirm-in 200ms ease both;
+}
+
+@keyframes confirm-in {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 12px)) scale(0.98); }
+}
+
+.confirm-modal-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 18px;
+  place-items: center;
+  border-radius: 15px;
+  color: white;
+  background: var(--hunter);
+}
+
+.confirm-modal-icon.pending {
+  color: #72551b;
+  background: #f4dfad;
+}
+
+.confirm-modal-icon .icon {
+  font-size: 26px;
+}
+
+.confirm-modal-copy h2 {
+  margin: 5px 0 8px;
+  color: var(--forest-deep);
+  font-size: 1.45rem;
+  line-height: 1.25;
+}
+
+.confirm-modal-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+.confirm-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 20px 0 12px;
+}
+
+.confirm-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 13px 14px;
+  border-radius: 13px;
+  background: rgba(243, 240, 230, 0.65);
+}
+
+.confirm-summary small {
+  color: var(--muted);
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+}
+
+.confirm-summary strong {
+  color: var(--forest-deep);
+  font-size: 1rem;
+}
+
+.confirm-part-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+.confirm-part-list > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.8125rem;
+}
+
+.confirm-part-list > span:last-child {
+  border-bottom: 0;
+}
+
+.confirm-part-list small {
+  overflow: hidden;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.confirm-part-list .more-parts {
+  justify-content: center;
+  color: var(--muted);
+}
+
+.pending-action {
+  background: #7a5b1e;
+}
+
+@media (max-width: 1100px) {
+  .bulk-action-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .bulk-action-controls {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 760px) {
+  .toolbar-actions .bulk-entry-button {
+    display: inline-flex;
+  }
+
+  .bulk-action-bar {
+    padding: 14px;
+  }
+
+  .bulk-action-controls .primary-button,
+  .bulk-action-controls .unreview-button {
+    flex: 1 1 210px;
+  }
+
+  .selectable-record {
+    grid-template-columns: 44px minmax(0, 1fr);
+    margin: 9px;
+    border: 1px solid var(--line);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.62);
+    overflow: hidden;
+  }
+
+  .selectable-record .table-row.parts-grid {
+    margin: 0;
+    padding-left: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .selectable-record .select-control {
+    align-content: start;
+    padding-top: 18px;
+  }
+
+  .selectable-record.selected {
+    background: rgba(216, 229, 182, 0.23);
+  }
+}
+
+@media (max-width: 520px) {
+  .bulk-entry-button {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .bulk-action-copy {
+    align-items: flex-start;
+  }
+
+  .bulk-action-controls {
+    align-items: stretch;
+  }
+
+  .bulk-action-controls .text-button,
+  .bulk-action-controls .selection-count,
+  .bulk-action-controls .primary-button,
+  .bulk-action-controls .unreview-button {
+    width: 100%;
+    flex-basis: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .confirm-modal {
+    padding: 22px 18px 18px;
+    border-radius: 19px;
+  }
+
+  .confirm-modal-copy h2 {
+    font-size: 1.25rem;
+  }
+
+  .confirm-modal .modal-footer {
+    position: static;
+    align-items: stretch;
+    flex-direction: column-reverse;
+    padding: 0;
+    background: transparent;
+  }
+
+  .confirm-modal .modal-footer button {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -2,6 +2,7 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import Image from "next/image";
+import { createPortal } from "react-dom";
 
 type Role = "admin" | "worker";
 type AdminView =
@@ -505,20 +506,57 @@ function PartsView({
 }) {
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState("Todos");
+  const [partItems, setPartItems] = useState(parts);
+  const [selectionMode, setSelectionMode] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+  const [reviewModal, setReviewModal] = useState<"Revisado" | "Pendiente" | null>(null);
   const filtered = useMemo(
     () =>
-      parts.filter((part) => {
+      partItems.filter((part) => {
         const text = `${part.house} ${part.employee} ${part.client} ${part.task}`.toLowerCase();
         return text.includes(query.toLowerCase()) && (status === "Todos" || part.status === status);
       }),
-    [query, status],
+    [partItems, query, status],
   );
+  const selectableIds = filtered.map((part) => part.id);
+  const selectedParts = partItems.filter((part) => selectedIds.includes(part.id));
+  const allVisibleSelected = selectableIds.length > 0 && selectableIds.every((id) => selectedIds.includes(id));
+
+  const leaveSelectionMode = () => {
+    setSelectionMode(false);
+    setSelectedIds([]);
+  };
+
+  const togglePart = (id: number) => {
+    setSelectedIds((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
+  };
+
+  const toggleVisible = () => {
+    setSelectedIds((current) => {
+      if (allVisibleSelected) return current.filter((id) => !selectableIds.includes(id));
+      return Array.from(new Set([...current, ...selectableIds]));
+    });
+  };
+
+  const confirmReview = (targetStatus: "Revisado" | "Pendiente") => {
+    setPartItems((current) => current.map((part) => selectedIds.includes(part.id) ? { ...part, status: targetStatus } : part));
+    const destination = targetStatus === "Revisado" ? "revisados" : "no revisados";
+    notify(`${selectedIds.length} ${selectedIds.length === 1 ? "parte marcado" : "partes marcados"} como ${destination}`);
+    setReviewModal(null);
+    leaveSelectionMode();
+  };
 
   return (
     <div className="page-stack">
       <section className="page-toolbar">
         <div className="toolbar-copy"><strong>{filtered.length} partes</strong><span>Mostrando actividad reciente</span></div>
         <div className="toolbar-actions">
+          <button
+            className={`secondary-button bulk-entry-button ${selectionMode ? "active" : ""}`}
+            onClick={() => selectionMode ? leaveSelectionMode() : setSelectionMode(true)}
+          >
+            <Icon name={selectionMode ? "close" : "checklist"} /> {selectionMode ? "Cancelar selección" : "Revisar varios"}
+          </button>
           <button className="secondary-button" onClick={() => notify("Preparando vista de impresión…")}><Icon name="print" /> Imprimir</button>
           <button className="secondary-button" onClick={() => notify("Exportación preparada")}><Icon name="download" /> Exportar</button>
           <button className="primary-button" onClick={() => notify("Formulario de nuevo parte abierto")}><Icon name="add" /> Nuevo parte</button>
@@ -546,21 +584,62 @@ function PartsView({
       </section>
 
       <section className="panel table-panel">
-        <div className="table-head parts-grid">
+        {selectionMode && (
+          <div className="bulk-action-bar" aria-live="polite">
+            <div className="bulk-action-copy">
+              <span className="bulk-icon"><Icon name="done_all" /></span>
+              <div><strong>Revisión múltiple</strong><span>Selecciona los partes cuyo estado quieras actualizar.</span></div>
+            </div>
+            <div className="bulk-action-controls">
+              <button className="text-button" onClick={toggleVisible} disabled={!selectableIds.length}>
+                {allVisibleSelected ? "Deseleccionar visibles" : `Seleccionar visibles (${selectableIds.length})`}
+              </button>
+              <span className="selection-count">{selectedIds.length} {selectedIds.length === 1 ? "seleccionado" : "seleccionados"}</span>
+              <button className="secondary-button unreview-button" disabled={!selectedIds.length} onClick={() => setReviewModal("Pendiente")}>
+                <Icon name="remove_done" /> Marcar como no revisados
+              </button>
+              <button className="primary-button" disabled={!selectedIds.length} onClick={() => setReviewModal("Revisado")}>
+                <Icon name="task_alt" /> Marcar como revisados
+              </button>
+            </div>
+          </div>
+        )}
+        <div className={`table-head parts-grid ${selectionMode ? "bulk-enabled" : ""}`}>
+          {selectionMode && (
+            <label className="select-control select-all-control" title="Seleccionar todos los partes visibles">
+              <input type="checkbox" checked={allVisibleSelected} onChange={toggleVisible} disabled={!selectableIds.length} />
+              <span />
+            </label>
+          )}
           <span>Estado</span><span>Fecha</span><span>Empleado</span><span>Casa / obra</span><span>Tarea</span><span>Horas</span><span />
         </div>
         <div className="parts-table">
-          {filtered.map((part) => (
-            <button className="table-row parts-grid" key={part.id} onClick={() => onSelectPart(part)}>
-              <span data-label="Estado"><StatusChip status={part.status} /></span>
-              <span data-label="Fecha"><strong>{part.date}</strong><small>#{part.id}</small></span>
-              <span data-label="Empleado" className="person-cell"><i>{part.employee.slice(0, 2).toUpperCase()}</i>{part.employee}</span>
-              <span data-label="Casa / obra"><strong>{part.house}</strong><small>{part.client}</small></span>
-              <span data-label="Tarea" className="task-cell">{part.task}<small>{part.category}</small></span>
-              <span data-label="Horas" className="hours-cell">{formatHours(part.hours)}</span>
-              <span className="row-actions"><Icon name="chevron_right" /></span>
-            </button>
-          ))}
+          {filtered.map((part) => {
+            const selected = selectedIds.includes(part.id);
+            const row = (
+              <button className={`table-row parts-grid ${selected ? "selected" : ""}`} onClick={() => selectionMode ? togglePart(part.id) : onSelectPart(part)}>
+                <span data-label="Estado"><StatusChip status={part.status} /></span>
+                <span data-label="Fecha"><strong>{part.date}</strong><small>#{part.id}</small></span>
+                <span data-label="Empleado" className="person-cell"><i>{part.employee.slice(0, 2).toUpperCase()}</i>{part.employee}</span>
+                <span data-label="Casa / obra"><strong>{part.house}</strong><small>{part.client}</small></span>
+                <span data-label="Tarea" className="task-cell">{part.task}<small>{part.category}</small></span>
+                <span data-label="Horas" className="hours-cell">{formatHours(part.hours)}</span>
+                <span className="row-actions"><Icon name="chevron_right" /></span>
+              </button>
+            );
+
+            if (!selectionMode) return <div className="part-table-record" key={part.id}>{row}</div>;
+
+            return (
+              <div className={`part-table-record selectable-record ${selected ? "selected" : ""}`} key={part.id}>
+                <label className="select-control" title={`Seleccionar parte ${part.id}`}>
+                  <input type="checkbox" checked={selected} onChange={() => togglePart(part.id)} />
+                  <span />
+                </label>
+                {row}
+              </div>
+            );
+          })}
           {!filtered.length && (
             <div className="empty-state">
               <span><Icon name="search_off" /></span>
@@ -575,7 +654,62 @@ function PartsView({
           <div><button disabled><Icon name="chevron_left" /></button><button className="active">1</button><button>2</button><button>3</button><button><Icon name="chevron_right" /></button></div>
         </div>
       </section>
+      <BulkReviewModal
+        targetStatus={reviewModal}
+        parts={selectedParts}
+        onClose={() => setReviewModal(null)}
+        onConfirm={confirmReview}
+      />
     </div>
+  );
+}
+
+function BulkReviewModal({
+  targetStatus,
+  parts: selectedParts,
+  onClose,
+  onConfirm,
+}: {
+  targetStatus: "Revisado" | "Pendiente" | null;
+  parts: Part[];
+  onClose: () => void;
+  onConfirm: (targetStatus: "Revisado" | "Pendiente") => void;
+}) {
+  if (!targetStatus) return null;
+  const totalHours = selectedParts.reduce((total, part) => total + part.hours, 0);
+  const isReviewing = targetStatus === "Revisado";
+  const actionLabel = selectedParts.length === 1
+    ? (isReviewing ? "revisado" : "no revisado")
+    : (isReviewing ? "revisados" : "no revisados");
+  return createPortal(
+    <>
+      <button className="drawer-backdrop" onClick={onClose} aria-label="Cancelar revisión múltiple" />
+      <section className="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="bulk-review-title">
+        <div className={`confirm-modal-icon ${isReviewing ? "" : "pending"}`}><Icon name={isReviewing ? "done_all" : "remove_done"} /></div>
+        <div className="confirm-modal-copy">
+          <span className="eyebrow">CONFIRMAR REVISIÓN</span>
+          <h2 id="bulk-review-title">¿Marcar {selectedParts.length} {selectedParts.length === 1 ? "parte" : "partes"} como {actionLabel}?</h2>
+          <p>{isReviewing
+            ? "Los partes seleccionados dejarán de aparecer como pendientes. Podrás seguir consultándolos desde el filtro de estado."
+            : "Los partes seleccionados volverán al estado pendiente para que puedan revisarse de nuevo."}</p>
+        </div>
+        <div className="confirm-summary">
+          <div><small>PARTES</small><strong>{selectedParts.length}</strong></div>
+          <div><small>HORAS TOTALES</small><strong>{formatHours(totalHours)}</strong></div>
+        </div>
+        <div className="confirm-part-list" aria-label="Partes seleccionados">
+          {selectedParts.slice(0, 3).map((part) => <span key={part.id}>#{part.id} · {part.employee}<small>{part.house}</small></span>)}
+          {selectedParts.length > 3 && <span className="more-parts">Y {selectedParts.length - 3} más</span>}
+        </div>
+        <div className="modal-footer">
+          <button className="secondary-button" onClick={onClose}>Cancelar</button>
+          <button className={`primary-button ${isReviewing ? "" : "pending-action"}`} onClick={() => onConfirm(targetStatus)}>
+            <Icon name={isReviewing ? "task_alt" : "remove_done"} /> Sí, marcar como {actionLabel}
+          </button>
+        </div>
+      </section>
+    </>,
+    document.body,
   );
 }
 
